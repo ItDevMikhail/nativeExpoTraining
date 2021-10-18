@@ -1,63 +1,28 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { Navbar } from './scr/Navbar';
-import { AddTodo } from './scr/AddTodo';
-import { Todo } from './scr/Todo';
+import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import * as Font from 'expo-font';
+import Navigate from './components/Navigate';
+import AppLoading from 'expo-app-loading';
+
+
+const fonts = () => Font.loadAsync({
+  'mt-bold': require('./fonts/Montserrat-Bold.ttf'),
+  'mt-light': require('./fonts/Montserrat-Light.ttf'),
+});
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
 
-  const addTodo = (title) => {
-    //   const newTodo = {
-    //     id: Date.now().toString(),
-    //     title: title
-    //   }
+  const [font, setFont] = useState(false);
 
-    // setTodos(todos.concat([newTodo]));
 
-    // setTodos((prevTodos) => {
-    //   return [
-    //     ...prevTodos,
-    //     newTodo
-    //   ]
-    // })
-
-    setTodos(prev => [
-      ...prev,
-      {
-        id: Date.now().toString(),
-        title: title
-      }
-    ])
+  if (font) {
+    return (
+      <Navigate />
+    )
+  } else {
+    return (
+      <AppLoading startAsync={fonts} onFinish={() => setFont(true)} onError={console.warn} />
+    );
   }
-
-  const removeTodo = id => {
-    setTodos(prev => prev.filter(todo => todo.id !== id))
-  }
-
-  return (
-    <View >
-      <Navbar title='Todo App' />
-      <View style={styles.container}>
-        <AddTodo onSubmit={addTodo} />
-
-        <FlatList
-          data={todos}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <Todo todo={item} onRemove={removeTodo} />}
-        />
-
-        {/* <View>
-          {todos.map(todo => (<Todo key={todo.id} todo={todo} />))}
-        </View> */}
-      </View>
-    </View>
-  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 30,
-    paddingVertical: 20,
-  }
-});

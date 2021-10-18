@@ -14,7 +14,7 @@ export const Todo = ({ todo, onRemove }) => {
             onLongPress={onRemove.bind(null, todo.id)}
         >
             <View style={styles.todo}>
-                <Text>{todo.title}</Text>
+                <Text>{todo.name}</Text>
             </View>
         </TouchableOpacity>
     )

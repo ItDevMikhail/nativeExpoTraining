@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Button, Alert } from 'react-native';
 
 
-export const AddTodo = ({ onSubmit }) => {
+export const AddTodo = ({ onSubmit, onAdd }) => {
     const [value, setValue] = useState('');
 
+    const pressLoad = () => {
+        onSubmit(value);
+    }
     const pressHandler = () => {
         if (value.trim()) {
-            onSubmit(value);
+            onAdd(value);
             setValue('');
         } else {
             Alert.alert('Название дела не может быть пустым')
@@ -25,7 +28,10 @@ export const AddTodo = ({ onSubmit }) => {
                 autoCorrect={false} // авто исправление текста
                 autoCapitalize="none" // чтобы не делало первую букву заглавной
             />
-            <Button title='Добавить' onPress={pressHandler} />
+            <View>
+                <Button title='Загрузить' onPress={pressLoad} />
+                <Button title='Добавить' onPress={pressHandler} />
+            </View>
         </View>
     )
 }
