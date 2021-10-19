@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { Text, StyleSheet, View, FlatList, TouchableOpacity, Image, StatusBar } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from '@react-navigation/native';
 
-export const Home = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
+
     const [content, setContent] = useState([
         { title: 'Google', anons: 'Gooogle!!!', full: 'Gooogle is cool!', key: '1', img: 'https://1prof.by/storage/2021/01/google-485611_1280-1024x723.png' },
         { title: 'Apple', anons: 'Apple!!!', full: 'Apple is cool!', key: '2', img: 'https://games.mail.ru/pre_895x0_resize/hotbox/content_files/news/2021/09/14/095a555d711f42f09071468bdb4e0b6a.jpg?quality=85&format=webp' },
         { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '3', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '4', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '5', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '6', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '7', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '8', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '9', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '10', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '11', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '12', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
-        { title: 'FaceBook', anons: 'FaceBook!!!', full: 'FaceBook is cool!', key: '13', img: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/68/756333852072683.jpg' },
     ]);
 
+    const { colors } = useTheme();
 
+    const theme = useTheme();
 
     return (
         <View style={styles.home}>
+            <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} backgroundColor='transparent' translucent={true} />
             <FlatList
                 data={content}
                 renderItem={({ item }) => (
-                    <TouchableOpacity style={styles.block} onPress={() => navigation.navigate('FullContent', item)}>
+                    <TouchableOpacity style={[styles.block, theme.dark ? { borderColor: '#404040' } : { borderColor: '#000' }]} onPress={() => navigation.navigate('FullContent', item)}>
                         <Image style={styles.img} source={{ uri: item.img }}></Image>
                         <View>
                             <Text style={styles.title}>{item.title}</Text>
@@ -41,9 +36,12 @@ export const Home = ({ navigation }) => {
     )
 }
 
+export default HomeScreen;
+
 const styles = StyleSheet.create({
     home: {
         flex: 1,
+        position: 'absolute',
         flexDirection: 'row',
         justifyContent: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',

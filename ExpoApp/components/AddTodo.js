@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Button, Alert } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 
 export const AddTodo = ({ onSubmit, onAdd }) => {
+    const { colors } = useTheme();
+
     const [value, setValue] = useState('');
 
     const pressLoad = () => {
@@ -20,10 +23,11 @@ export const AddTodo = ({ onSubmit, onAdd }) => {
     return (
         <View style={styles.block}>
             <TextInput
-                style={styles.input}
+                style={[styles.input, { color: colors.text }]}
                 // onChangeText={text => setValue(text)} === onChangeText={setValue}
                 onChangeText={setValue}
                 value={value}
+                placeholderTextColor={colors.text}
                 placeholder='Введите название дела...'
                 autoCorrect={false} // авто исправление текста
                 autoCapitalize="none" // чтобы не делало первую букву заглавной

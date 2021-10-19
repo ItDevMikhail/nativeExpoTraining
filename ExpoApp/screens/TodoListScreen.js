@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
-import { Navbar } from './Navbar';
-import { AddTodo } from './AddTodo';
-import { Todo } from './Todo';
+import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
+import { Navbar } from '../components/Navbar';
+import { AddTodo } from '../components/AddTodo';
+import { Todo } from '../components/Todo';
 
 
-export function List() {
+export default function TodoListScrean() {
     const [todos, setTodos] = useState([]);
 
     const fetchTodo = async () => {
