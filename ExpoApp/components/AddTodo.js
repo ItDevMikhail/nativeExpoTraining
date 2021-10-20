@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import { Ionicons } from "@expo/vector-icons";
 
 
 export const AddTodo = ({ onSubmit, onAdd }) => {
@@ -21,20 +22,20 @@ export const AddTodo = ({ onSubmit, onAdd }) => {
     }
 
     return (
-        <View style={styles.block}>
-            <TextInput
-                style={[styles.input, { color: colors.text }]}
-                // onChangeText={text => setValue(text)} === onChangeText={setValue}
-                onChangeText={setValue}
-                value={value}
-                placeholderTextColor={colors.text}
-                placeholder='Введите название дела...'
-                autoCorrect={false} // авто исправление текста
-                autoCapitalize="none" // чтобы не делало первую букву заглавной
-            />
-            <View>
-                <Button title='Загрузить' onPress={pressLoad} />
-                <Button title='Добавить' onPress={pressHandler} />
+        <View>
+            <Button title='Загрузить Список' onPress={pressLoad} />
+            <View style={styles.block}>
+                <TextInput
+                    style={[styles.input, { color: colors.text }]}
+                    // onChangeText={text => setValue(text)} === onChangeText={setValue}
+                    onChangeText={setValue}
+                    value={value}
+                    placeholderTextColor={colors.text}
+                    placeholder='Введите название дела...'
+                    autoCorrect={false} // авто исправление текста
+                    autoCapitalize="none" // чтобы не делало первую букву заглавной
+                />
+                <Ionicons name='add-circle' size={30} color={colors.text} onPress={pressHandler} />
             </View>
         </View>
     )
@@ -45,13 +46,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 15
+        marginVertical: 15,
+        borderRadius: 5,
+        borderWidth: 2,
+        borderColor: 'black',
+        paddingHorizontal: 7
     },
     input: {
-        width: '70%',
+        flexGrow: 2,
         borderStyle: 'solid',
-        padding: 10,
-        borderBottomWidth: 2,
-        borderBottomColor: '#3949ab'
-    }
+        paddingVertical: 7,
+        paddingRight: 5,
+    },
 })

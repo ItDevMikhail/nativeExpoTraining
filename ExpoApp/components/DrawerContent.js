@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet } from 'react-native';
-import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { View, StyleSheet, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { useSafeAreaFrame } from "react-native-safe-area-context";
 import {
     useTheme,
     Avatar,
@@ -12,27 +13,30 @@ import {
     TouchableRipple,
     Switch
 } from 'react-native-paper';
-import { Ionicons, Octicons, Feather } from "@expo/vector-icons";
+import { Ionicons, Octicons, Feather, AntDesign } from "@expo/vector-icons";
 import { AuthContext } from '../components/context';
 
 export function DrawerContent(props) {
 
+    const insets = useSafeAreaFrame();
     const paperTheme = useTheme();
     const { toggleTheme, signOut } = useContext(AuthContext);
 
 
     return (
         <View style={{ flex: 1 }}>
-            <DrawerContentScrollView {...props}>
-                <View style={styles.drawerContent}>
-                    <View style={styles.userInfoSection}>
-                        <View style={{ flexDirection: 'row', marginTop: 15 }}>
-                            <Avatar.Image source={{
-                                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Ours_des_pyrenees_aspe_2002.jpg/220px-Ours_des_pyrenees_aspe_2002.jpg'
-                            }} size={50} />
+            <DrawerContentScrollView {...props} contentContainerStyle={{ paddingTop: insets.top, }}>
 
+                <ImageBackground source={require('../assets/bg.jpg')} resizeMode="cover" style={{ width: '100%', flex: 1 }}>
+                    <View style={styles.userInfoSection}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableWithoutFeedback onPress={() => { props.navigation.navigate('Profile') }}>
+                                <Avatar.Image source={{
+                                    uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Ours_des_pyrenees_aspe_2002.jpg/220px-Ours_des_pyrenees_aspe_2002.jpg'
+                                }} size={50} />
+                            </TouchableWithoutFeedback>
                             <View style={{ marginLeft: 15, flexDirection: 'column' }}>
-                                <Title style={styles.title}>Mikhail Zhevnov</Title>
+                                <Title style={styles.title}>Mikhail</Title>
                                 <Caption style={styles.caption}>@Mischanja</Caption>
                             </View>
                         </View>
@@ -47,40 +51,50 @@ export function DrawerContent(props) {
                             </View>
                         </View>
                     </View>
+                </ImageBackground>
+
+                <View style={styles.drawerContent}>
                     <Drawer.Section style={styles.drawerSection}>
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Ionicons name="home-outline" size={size} color={color} />
                             )}
-                            label="Home"
+                            label="Домой"
                             onPress={() => { props.navigation.navigate('Home') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Feather name="user" size={size} color={color} />
                             )}
-                            label="Profile"
+                            label="Профиль"
                             onPress={() => { props.navigation.navigate('Profile') }}
+                        />
+                        <Drawer.Item
+                            icon={({ color, size }) => (
+                                <AntDesign name="contacts" size={size} color={color} />
+                            )}
+                            label="Контакты"
+                            onPress={() => { props.navigation.navigate('Home') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Feather name="bookmark" size={size} color={color} />
                             )}
-                            label="Bookmarks"
+                            label="Избранные"
                             onPress={() => { props.navigation.navigate('BookmarkScreen') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Ionicons name="md-settings-outline" size={size} color={color} />
                             )}
-                            label="Settings"
+                            label="Настройки"
                             onPress={() => { props.navigation.navigate('SettingsScreen') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Feather name="user-check" size={size} color={color} />
                             )}
-                            label="Support"
+                            label="Помощь"
                             onPress={() => { props.navigation.navigate('SupportScreen') }}
                         />
                     </Drawer.Section>
@@ -89,23 +103,23 @@ export function DrawerContent(props) {
                             <View style={styles.preference}>
                                 <Text>Dark Theme</Text>
                                 <View pointerEvents="none">
-                                    <Switch value={paperTheme.dark} />
+                                    <Switch value={paperTheme.dark} color='white' />
                                 </View>
                             </View>
                         </TouchableRipple>
                     </Drawer.Section>
                 </View>
-            </DrawerContentScrollView>
+            </DrawerContentScrollView >
             <Drawer.Section style={styles.bottomDrawerSection}>
                 <Drawer.Item
                     icon={({ color, size }) => (
                         <Octicons name="sign-out" size={size} color={color} />
                     )}
-                    label="Sign Out"
+                    label="Выйти"
                     onPress={() => { signOut() }}
                 />
             </Drawer.Section>
-        </View>
+        </View >
     );
 }
 
@@ -115,6 +129,8 @@ const styles = StyleSheet.create({
     },
     userInfoSection: {
         paddingLeft: 20,
+        marginTop: 30,
+        paddingBottom: 10
     },
     title: {
         fontSize: 16,

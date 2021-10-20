@@ -152,6 +152,7 @@ export default function App() {
               <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}
                 screenOptions={({ route }) => ({
                   headerShown: false,
+                  swipeEdgeWidth: 320,
                 })}
               >
                 <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />

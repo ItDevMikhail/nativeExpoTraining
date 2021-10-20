@@ -15,7 +15,7 @@ const AboutScreen = ({ navigation }) => {
             />
             <Button
                 title="Go back"
-                onPress={() => navigation.goBack()}
+                onPress={() => navigation.openDrawer()}
             />
         </View>
     );

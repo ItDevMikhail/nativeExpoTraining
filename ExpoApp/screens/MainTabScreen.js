@@ -84,7 +84,7 @@ const HomeStackScreen = ({ navigation }) => (
         <HomeStack.Screen name="Homee" component={HomeScreen} options={{
             title: 'Home',
             headerLeft: () => (
-                <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
+                <Icon.Button name="menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
             )
         }} />
         <HomeStack.Screen name="FullContent" component={FullContent} options={{ title: 'Подробнее' }} />
