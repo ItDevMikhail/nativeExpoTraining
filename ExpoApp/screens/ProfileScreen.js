@@ -33,21 +33,21 @@ const ProfileScreen = ({ navigation }) => {
                 </View>
             </ImageBackground>
             <View style={[styles.block, { backgroundColor: colors.background }]}>
-                <Paragraph style={styles.paragraph}>Аккаунт</Paragraph>
+                <Paragraph style={styles.paragraph}>Account</Paragraph>
                 <View style={styles.userInfo}>
                     <Text style={{ color: colors.text }}>@Mischanja</Text>
-                    <Caption style={{ color: colors.text }}>Имя пользователя</Caption>
+                    <Caption style={{ color: colors.text }}>User name</Caption>
                 </View>
                 <Divider />
                 <View style={styles.userInfo}>
-                    <Text style={{ color: colors.text }}>О себе</Text>
-                    <Caption style={{ color: colors.text }}>Напишите немного о себе</Caption>
+                    <Text style={{ color: colors.text }}>About me</Text>
+                    <Caption style={{ color: colors.text }}>Add a few words about yourself</Caption>
                 </View>
             </View>
             <View style={[styles.block, { backgroundColor: colors.background, marginTop: 7, borderTopWidth: 1 }]}>
-                <Paragraph style={styles.paragraph}>Настройки</Paragraph>
+                <Paragraph style={styles.paragraph}>Settings</Paragraph>
                 <List.Item
-                    title="Уведомления и звук"
+                    title="Notifications and Sounds"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <MaterialCommunityIcons name="bell-outline" size={size} color={color} />
                     )} />}
@@ -55,7 +55,7 @@ const ProfileScreen = ({ navigation }) => {
                 />
                 <Divider />
                 <List.Item
-                    title="Конфиденциальность"
+                    title="Privacy and Security"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <MaterialCommunityIcons name="lock-outline" size={size} color={color} />
                     )} />}
@@ -63,7 +63,7 @@ const ProfileScreen = ({ navigation }) => {
                 />
                 <Divider />
                 <List.Item
-                    title="Данные и память"
+                    title="Data and Storage"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <Feather name="database" size={size} color={color} />
                     )} />}
@@ -71,7 +71,7 @@ const ProfileScreen = ({ navigation }) => {
                 />
                 <Divider />
                 <List.Item
-                    title="Папки"
+                    title="Folders"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <Feather name="folder" size={size} color={color} />
                     )} />}
@@ -79,7 +79,7 @@ const ProfileScreen = ({ navigation }) => {
                 />
                 <Divider />
                 <List.Item
-                    title="Язык"
+                    title="Language"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <FontAwesome name="language" size={size} color={color} />
                     )} />}
@@ -89,7 +89,7 @@ const ProfileScreen = ({ navigation }) => {
             <View style={[styles.block, { marginTop: 7, borderTopWidth: 1, backgroundColor: colors.background }]}>
                 <Paragraph style={styles.paragraph}>Помощь</Paragraph>
                 <List.Item
-                    title="Задать вопрос"
+                    title="Ask a Question"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />
                     )} />}
@@ -97,7 +97,7 @@ const ProfileScreen = ({ navigation }) => {
                 />
                 <Divider />
                 <List.Item
-                    title="Вопросы о приложении"
+                    title="App FAQ"
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <SimpleLineIcons name="question" size={size} color={color} />
                     )} />}
@@ -105,7 +105,7 @@ const ProfileScreen = ({ navigation }) => {
                 />
                 <Divider />
                 <List.Item
-                    title="Политика конфиденциальности"
+                    title="Privacy Policy"
                     titleStyle={{}}
                     left={props => <List.Icon {...props} icon={({ color, size }) => (
                         <MaterialCommunityIcons name="shield-check-outline" size={size} color={color} />

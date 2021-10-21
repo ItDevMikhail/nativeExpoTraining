@@ -2,14 +2,11 @@ import React from 'react';
 import {
     View,
     Text,
-    Button,
     TouchableOpacity,
-    Dimensions,
     TextInput,
     Platform,
     StyleSheet,
     ScrollView,
-    StatusBar
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 // import LinearGradient from 'react-native-linear-gradient';
@@ -74,8 +71,11 @@ const SignInScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
-            <StatusBar backgroundColor='#009387' barStyle="light-content" />
+        <LinearGradient style={styles.container}
+            colors={['#00ffc9', '#091179', '#d104c6']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 2, y: 2 }}
+            locations={[0, 0.3, 0.5]}>
             <View style={styles.header}>
                 <Text style={styles.text_header}>Register Now!</Text>
             </View>
@@ -193,31 +193,39 @@ const SignInScreen = ({ navigation }) => {
                             onPress={() => { }}
                         >
                             <LinearGradient
-                                colors={['#08d4c4', '#01ab9d']}
+                                colors={['#00ffc9', '#091179', '#d104c6']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 2.4, y: 3 }}
+                                locations={[0, 0.5, 0.8]}
                                 style={styles.signIn}
+                                activeOpacity={0.8}
                             >
                                 <Text style={[styles.textSign, {
                                     color: '#fff'
                                 }]}>Sign Up</Text>
                             </LinearGradient>
                         </TouchableOpacity>
-
-                        <TouchableOpacity
-                            onPress={() => navigation.goBack()}
-                            style={[styles.signIn, {
-                                borderColor: '#009387',
-                                borderWidth: 1,
-                                marginTop: 15
-                            }]}
+                        <LinearGradient
+                            colors={['#00ffc9', '#091179', '#d104c6']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 2.2, y: 3 }}
+                            locations={[0, 0.4, 0.6]}
+                            style={[styles.signIn, { marginTop: 16 }]}
                         >
-                            <Text style={[styles.textSign, {
-                                color: '#009387'
-                            }]}>Sign In</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.goBack()}
+                                style={[styles.signIn, { backgroundColor: '#fff', width: '99%', height: 48, borderRadius: 8 }]}
+                                activeOpacity={0.9}
+                            >
+                                <Text style={[styles.textSign, {
+                                    color: '#009387'
+                                }]}>Sign In</Text>
+                            </TouchableOpacity>
+                        </LinearGradient>
                     </View>
                 </ScrollView>
             </Animatable.View>
-        </View>
+        </LinearGradient>
     );
 };
 

@@ -18,8 +18,12 @@ const SplashScreen = ({ navigation }) => {
     const { colors } = useTheme();
 
     return (
-        <View style={styles.container}>
-            <StatusBar backgroundColor='#009387' barStyle="light-content" />
+        <LinearGradient style={styles.container}
+            colors={['#00ffc9', '#091179', '#d104c6']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 2, y: 2 }}
+            locations={[0, 0.3, 0.5]}>
+            <StatusBar backgroundColor='#009387' barStyle="light-content" translucent={true} />
             <View style={styles.header}>
                 <Animatable.Image
                     animation="bounceIn"
@@ -42,7 +46,10 @@ const SplashScreen = ({ navigation }) => {
                 <View style={styles.button}>
                     <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
                         <LinearGradient
-                            colors={['#08d4c4', '#01ab9d']}
+                            colors={['#00ffc9', '#091179', '#d104c6']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 2.5, y: 3 }}
+                            locations={[0, 0.3, 0.5]}
                             style={styles.signIn}
                         >
                             <Text style={styles.textSign}>Get Started</Text>
@@ -55,7 +62,7 @@ const SplashScreen = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </Animatable.View>
-        </View>
+        </LinearGradient>
     );
 };
 
@@ -67,12 +74,12 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#009387'
+        // backgroundColor: 'red',
     },
     header: {
         flex: 2,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     footer: {
         flex: 1,

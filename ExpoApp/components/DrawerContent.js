@@ -22,7 +22,6 @@ export function DrawerContent(props) {
     const paperTheme = useTheme();
     const { toggleTheme, signOut } = useContext(AuthContext);
 
-
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props} contentContainerStyle={{ paddingTop: insets.top, }}>
@@ -59,42 +58,42 @@ export function DrawerContent(props) {
                             icon={({ color, size }) => (
                                 <Ionicons name="home-outline" size={size} color={color} />
                             )}
-                            label="Домой"
+                            label="Home"
                             onPress={() => { props.navigation.navigate('Home') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Feather name="user" size={size} color={color} />
                             )}
-                            label="Профиль"
+                            label="Profile"
                             onPress={() => { props.navigation.navigate('Profile') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <AntDesign name="contacts" size={size} color={color} />
                             )}
-                            label="Контакты"
+                            label="Contacts"
                             onPress={() => { props.navigation.navigate('Home') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Feather name="bookmark" size={size} color={color} />
                             )}
-                            label="Избранные"
+                            label="Bookmarks"
                             onPress={() => { props.navigation.navigate('BookmarkScreen') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Ionicons name="md-settings-outline" size={size} color={color} />
                             )}
-                            label="Настройки"
+                            label="Settings"
                             onPress={() => { props.navigation.navigate('SettingsScreen') }}
                         />
                         <Drawer.Item
                             icon={({ color, size }) => (
                                 <Feather name="user-check" size={size} color={color} />
                             )}
-                            label="Помощь"
+                            label="Support"
                             onPress={() => { props.navigation.navigate('SupportScreen') }}
                         />
                     </Drawer.Section>
@@ -115,7 +114,7 @@ export function DrawerContent(props) {
                     icon={({ color, size }) => (
                         <Octicons name="sign-out" size={size} color={color} />
                     )}
-                    label="Выйти"
+                    label="Sign out"
                     onPress={() => { signOut() }}
                 />
             </Drawer.Section>
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     bottomDrawerSection: {
-        marginBottom: 15,
+        marginBottom: 10,
         borderTopColor: '#f4f4f4',
         borderTopWidth: 1,
     },

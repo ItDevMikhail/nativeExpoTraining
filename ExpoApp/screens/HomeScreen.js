@@ -17,7 +17,7 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.home}>
-            <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} backgroundColor='transparent' translucent={true} />
+            <StatusBar barStyle={theme.dark ? "light-content" : "dark-content"} backgroundColor='rgba(0,0,0, 0.2)' translucent={true} />
             <FlatList
                 data={content}
                 renderItem={({ item }) => (

@@ -10,7 +10,7 @@ const RootStack = createNativeStackNavigator();
 
 const RootStackScreen = ({ navigation }) => (
     <RootStack.Navigator screenOptions={{
-        headerShown: false
+        headerShown: false,
     }}>
         <RootStack.Screen name="SplashScreen" component={SplashScreen} />
         <RootStack.Screen name="SignInScreen" component={SignInScreen} />

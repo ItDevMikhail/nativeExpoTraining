@@ -17,13 +17,13 @@ export const AddTodo = ({ onSubmit, onAdd }) => {
             onAdd(value);
             setValue('');
         } else {
-            Alert.alert('Название дела не может быть пустым')
+            Alert.alert('The name todo\n cannot be empty')
         }
     }
 
     return (
         <View>
-            <Button title='Загрузить Список' onPress={pressLoad} />
+            <Button title='Loading todo list' onPress={pressLoad} />
             <View style={styles.block}>
                 <TextInput
                     style={[styles.input, { color: colors.text }]}
@@ -31,7 +31,7 @@ export const AddTodo = ({ onSubmit, onAdd }) => {
                     onChangeText={setValue}
                     value={value}
                     placeholderTextColor={colors.text}
-                    placeholder='Введите название дела...'
+                    placeholder='Write the name of todo...'
                     autoCorrect={false} // авто исправление текста
                     autoCapitalize="none" // чтобы не делало первую букву заглавной
                 />

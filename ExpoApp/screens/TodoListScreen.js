@@ -14,7 +14,6 @@ export default function TodoListScrean() {
             const response = await fetch('https://jsonplaceholder.typicode.com/users');
             const data = await response.json();
             setTodos(data);
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
